@@ -1,0 +1,42 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Java
+*.class
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Logs
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ambiente
+.env
+.env.*
+
+# Exceção: exemplo de variáveis de ambiente
+!.env.example
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Build
+build/
+out/
+
+# Node / Frontend
+node_modules/
+dist/
