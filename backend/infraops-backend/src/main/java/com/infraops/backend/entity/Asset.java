@@ -1,5 +1,8 @@
 package com.infraops.backend.entity;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -13,9 +16,11 @@ public class Asset {
     private Long id;
 
     @Column(nullable = false)
+    @NotBlank(message = "O nome do asset é obrigatório")
     private String name;
 
     @Column(unique = true)
+    @NotBlank(message = "O hostname do asset é obrigatório")
     private String hostname;
 
     @Column
@@ -26,10 +31,12 @@ public class Asset {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "asset_type_id", nullable = false)
+    @NotNull(message = "O tipo do asset é obrigatório")
     private AssetType assetType;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "location_id", nullable = false)
+    @NotNull(message = "A localização do asset é obrigatória")
     private Location location;
 
     @Column
@@ -37,6 +44,7 @@ public class Asset {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull(message = "O status do asset é obrigatório")
     private AssetStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -71,8 +79,7 @@ public class Asset {
             Location location,
             String operatingSystem,
             AssetStatus status,
-            User responsibleUser
-    ) {
+            User responsibleUser) {
         this.name = name;
         this.hostname = hostname;
         this.ipAddress = ipAddress;
